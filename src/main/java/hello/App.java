@@ -9,10 +9,8 @@ import java.nio.file.Paths;
 public class App {
     public static void main(String[] args) throws IOException {
         System.out.println("----------app----------");
-
-        deserializeReadUser();
-
-
+        serializeUser();
+        deserializeUser();
         System.out.println("----------app end----------");
     }
 
@@ -29,15 +27,7 @@ public class App {
         System.out.println("userJson"+ userJson);
     }
 
-    private static void deserializeUser() {
-        String userJson= "{\"name\":\"hunter\",\"email\":\"tb@gmail.com\",\"age\":38,\"isDeveloper\":true}";
-        Gson gson = new Gson();
-        UserSimple userObject = gson.fromJson(userJson, UserSimple.class);
-
-        System.out.println("getName: "+ userObject.getName());
-    }
-
-    private static void deserializeReadUser() throws IOException {
+    private static void deserializeUser() throws IOException {
         String fileName = "./src/test/resources/userSimple.json";
         String userJson = new String(Files.readAllBytes(Paths.get(fileName)));
         System.out.println("userJson: "+ userJson);
