@@ -1,6 +1,6 @@
 package hello;
 import com.google.gson.Gson;
-import hello.UserSimple;
+import hello.model.UserSimple;
 
 import java.io.IOException;
 import java.nio.file.Files;
