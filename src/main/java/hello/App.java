@@ -2,11 +2,15 @@ package hello;
 import com.google.gson.Gson;
 import hello.UserSimple;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("----------app----------");
 
-        deserializeUser();
+        deserializeReadUser();
 
 
         System.out.println("----------app end----------");
@@ -33,4 +37,13 @@ public class App {
         System.out.println("getName: "+ userObject.getName());
     }
 
+    private static void deserializeReadUser() throws IOException {
+        String fileName = "./src/test/resources/userSimple.json";
+        String userJson = new String(Files.readAllBytes(Paths.get(fileName)));
+        System.out.println("userJson: "+ userJson);
+
+        Gson gson = new Gson();
+        UserSimple userObject = gson.fromJson(userJson, UserSimple.class);
+        System.out.println("getName: "+ userObject.getName());
+    }
 }
